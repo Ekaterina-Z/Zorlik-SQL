@@ -1,0 +1,30 @@
+
+1 -3 задание - создание и копирование БД
+
+create DATABASE example;
+use example;
+create table users (id_user INT Primary key, user_name varchar(100) not null);
+show tables;
+select * from users;
+create DATABASE sample;
+
+создание и копирование  резервной копии ( 
+ mysqldump -u root example > D:/example.sql
+mysql -u root sample < D:/example.sql
+SHOW DATABASES;
+DESCRIBE sample.users;
+
+
+2-задание - файл создан пароль не запрашивается 
+
+4- задание 
+
+/* создание копии таблицы help_keyword  с выборкой не более 100 строк - выдает ошибку - не смогла понять в чем ошибка 
+mysqldump -u root  -c   mysql help_keyword --where ="help_keyword_id <100"> D:/help.sql
+
+но не работает выдает ошибку mysqldump: Couldn't execute 'SELECT /*!40001 SQL_NO_CACHE */ * FROM `help_keyword` WHERE =help_keyword_id <100':
+ You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=help_keyword_id <100' at line 1 (1064)*/
+дальше должно быть вот так скорее всего 
+create DATABASE help
+mysql -u root help < D:/help.sql - воспрос нужно ли создавать  таблицу для загрузки данных или она сама создаться при разворачивании из dump
+
